@@ -1,18 +1,5 @@
 version: '3'
 services: 
-    client: 
-        build: 
-            context: ./client
-        ports: 
-            - '3333:3000'
-        environment: 
-            - REACT_APP_API_URL=http://localhost:5001/api
-        depends_on: 
-            - server
-        volumes:
-            - ./client:/app/
-            - /app/node_modules
-        entrypoint: npm test -- --detectOpenHandles
     server: 
         build: 
             context: ./server

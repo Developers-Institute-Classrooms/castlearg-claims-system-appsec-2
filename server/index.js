@@ -6,7 +6,8 @@ const path = require("path");
 const yaml = require("js-yaml");
 const fs = require("fs");
 const swaggerUi = require("swagger-ui-express");
-const messageRouter = require("./routes/messageRouter");
+const claimsRouter = require("./routes/claimsRouter");
+const checkJwt = require("./middleware/checkJwt");
 const swaggerDocument = yaml.load(
     fs.readFileSync(path.join(__dirname, "./openapi.yaml"), "utf8")
 );
@@ -16,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-app.use("/api/messages", messageRouter)
+app.use("/api/claims", checkJwt, claimsRouter)
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const port = process.env.EXPRESS_PORT || 5000;

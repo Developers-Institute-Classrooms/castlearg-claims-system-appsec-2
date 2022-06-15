@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
     const [loading, setLoading] = useState(false);
@@ -29,9 +30,7 @@ function App() {
     }, [])
     return (
         <Fragment>
-            {loading && <div>Accesing Database via Hypertext Transfer Protocol...</div>}
-            {error && <div>Brutal Error</div>}
-            {messages.map(message => (<div>message: {message.message}</div>))}
+            <Header/>
         </Fragment>
     );
 }
