@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:16-alpine
 WORKDIR /app
 ENV CHOKIDAR_USEPOLLING=true
 COPY package*.json /app/
